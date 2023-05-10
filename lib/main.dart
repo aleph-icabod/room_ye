@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: Colors.deepOrange,
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginWithPassword(),
+      home: Login(),
     );
   }
 }

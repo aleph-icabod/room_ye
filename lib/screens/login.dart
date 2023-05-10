@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:room_ye/screens/login_with_password.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -29,7 +30,13 @@ class Login extends StatelessWidget {
                     height: 60,
                     width: 300,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>  LoginWithPassword(),
+                          ),
+                        );
+                      },
                       child: Text("Iniciar Sesión"),
                     ),
                   ),
