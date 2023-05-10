@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:room_ye/screens/login.dart';
+import 'package:room_ye/screens/login_with_password.dart';
 import 'package:room_ye/screens/my_home_page.dart';
 
 void main() {
@@ -16,10 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'Room Ye',
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.orange,
+        colorSchemeSeed: Colors.deepOrange,
       ),
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: LoginWithPassword(),
     );
   }
 }

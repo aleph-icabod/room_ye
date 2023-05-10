@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    print(Theme.of(context).colorScheme.primary);
     return Scaffold(
       body: Container(
         color: Colors.deepPurpleAccent,
@@ -20,35 +22,39 @@ class Login extends StatelessWidget {
                 fontSize: 40,
               ),
             ),
-            CircleAvatar(
-              radius: 100,
-              backgroundImage: NetworkImage("https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png"),
-            ),
             Container(
               child: Column(
                 children: [
                   SizedBox(
                     height: 60,
                     width: 300,
-                    child: FilledButton(
+                    child: ElevatedButton(
                       onPressed: () {},
                       child: Text("Iniciar Sesión"),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   SizedBox(
                     height: 60,
                     width: 300,
-                    child: FilledButton(
+                    child: ElevatedButton(
                       onPressed: () {},
                       child: Text("Registrar"),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   SizedBox(
                     height: 60,
                     width: 300,
-                    child: FilledButton(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor: Colors.white,
+                      ),
                       onPressed: () {},
                       child: Column(
                         children: [
@@ -68,7 +74,6 @@ class Login extends StatelessWidget {
                 ],
               ),
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
