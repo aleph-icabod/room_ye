@@ -20,10 +20,6 @@ class FullWidthButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    style ??= ElevatedButton.styleFrom(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      foregroundColor: Colors.white,
-    );
 
     return FullWidthWrapper(
       child: ElevatedButton(

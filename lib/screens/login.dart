@@ -1,101 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:room_ye/components/copyright.dart';
+import 'package:room_ye/components/fullwidth_button.dart';
 import 'package:room_ye/screens/login_with_password.dart';
 
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-    print(Theme.of(context).colorScheme.primary);
     return Scaffold(
       body: Container(
-        color: Colors.deepPurpleAccent,
-        width: double.infinity,
-        padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "RoomYe",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-              ),
-            ),
-            Container(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 60,
-                    width: 300,
-                    child: ElevatedButton(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          width: double.infinity,
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  "RoomYe",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                Column(
+                  children: [
+                    FullWidthButton(
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) =>  LoginWithPassword(),
+                            builder: (context) => LoginWithPassword(),
                           ),
                         );
                       },
-                      child: Text("Iniciar Sesión"),
+                      customStyle: ElevatedButton.styleFrom(),
+                      child: const Text("Iniciar Sesión"),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 60,
-                    width: 300,
-                    child: ElevatedButton(
+                    FullWidthButton(
                       onPressed: () {},
-                      child: Text("Registrar"),
+                      customStyle: ElevatedButton.styleFrom(),
+                      child: const Text("Registrar"),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 60,
-                    width: 300,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        foregroundColor: Colors.white,
-                      ),
+                    FullWidthButton(
                       onPressed: () {},
                       child: Column(
                         children: [
-                          Text("Continuar con"),
+                          const Text("Continuar con"),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.apple),
-                              Icon(Icons.facebook),
-                              Icon(Icons.g_translate),
+                            children: const [
+                              FaIcon(
+                                FontAwesomeIcons.apple,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 10,),
+                              FaIcon(
+                                FontAwesomeIcons.facebook,
+                                color: Colors.blue,
+                              ),
+                              SizedBox(width: 10,),
+                              FaIcon(
+                                FontAwesomeIcons.google,
+                                color: Colors.red,
+                              ),
                             ],
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "RoomYe 2023",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  ],
                 ),
-                Icon(Icons.copyright, color: Colors.white),
+                const CopyRight(),
               ],
             ),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }

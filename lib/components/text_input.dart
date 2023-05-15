@@ -9,6 +9,7 @@ class TextInput extends StatelessWidget {
 
   final InputDecoration? decoration;
   final EdgeInsets? padding;
+  final TextStyle? style;
 
   const TextInput(
       {super.key,
@@ -16,7 +17,8 @@ class TextInput extends StatelessWidget {
       required this.label,
       this.icon,
       this.decoration,
-      this.padding});
+      this.padding,
+      this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,9 @@ class TextInput extends StatelessWidget {
       child: TextField(
         decoration: decoration ?? createInputDecoration(context, label, icon),
         controller: controller,
+        style: style?? TextStyle(
+          color: Theme.of(context).colorScheme.surfaceVariant,
+        ),
       ),
     );
   }
@@ -36,13 +41,13 @@ class TextInput extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
       ),
       filled: true,
-      fillColor: Colors.white,
+      fillColor: Theme.of(context).colorScheme.inverseSurface,
       prefixIcon: icon != null ? Icon(icon) : null,
       contentPadding: const EdgeInsets.all(20),
       hintText: text,
+      prefixIconColor: Theme.of(context).colorScheme.surfaceVariant,
       hintStyle: TextStyle(
-        color: Theme.of(context).colorScheme.primary,
-        fontSize: 20,
+        color: Theme.of(context).colorScheme.surfaceVariant,
       ),
     );
   }

@@ -20,12 +20,12 @@ class _LoginWithPasswordState extends State<LoginWithPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         title: const Text("Room Ye"),
         centerTitle: true,
       ),
       body: Container(
-          color: Colors.deepPurpleAccent,
+          color: Theme.of(context).colorScheme.primaryContainer,
           child: SafeArea(
             child: CustomScrollView(
               slivers: [
@@ -55,13 +55,13 @@ class _LoginWithPasswordState extends State<LoginWithPassword> {
                             label: "Contraseña",
                             controller: passwordController,
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                            icon: Icons.lock,
                           ),
                           if (errorText.isNotEmpty)
                             Text(
                               errorText,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
+                              style:  TextStyle(
+                                color: Theme.of(context).colorScheme.error,
                               ),
                             ),
                           FullWidthWrapper(
