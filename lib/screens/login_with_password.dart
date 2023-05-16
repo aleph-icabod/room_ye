@@ -4,6 +4,7 @@ import 'package:room_ye/components/fullwidth_button.dart';
 import 'package:room_ye/components/fullwidth_wrapper.dart';
 import 'package:room_ye/components/text_input.dart';
 import 'package:room_ye/config/constants.dart';
+import 'package:room_ye/screens/home.dart';
 import 'package:room_ye/screens/my_home_page.dart';
 
 class LoginWithPassword extends StatefulWidget {
@@ -20,12 +21,12 @@ class _LoginWithPasswordState extends State<LoginWithPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text("Room Ye"),
         centerTitle: true,
       ),
       body: Container(
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color: Theme.of(context).colorScheme.primary,
           child: SafeArea(
             child: CustomScrollView(
               slivers: [
@@ -39,13 +40,15 @@ class _LoginWithPasswordState extends State<LoginWithPassword> {
                       Column(
                         children: [
                           const Padding(
-                            padding: EdgeInsets.symmetric(vertical: UIConstants.paddingBetweenComponents),
+                            padding: EdgeInsets.symmetric(
+                                vertical: UIConstants.paddingBetweenComponents),
                             child: CircleAvatar(
                               radius: 80,
                               backgroundImage:
                                   AssetImage("assets/images/avatar.png"),
                             ),
                           ),
+                          SizedBox(),
                           TextInput(
                             icon: Icons.person,
                             label: "Nombre de usuario",
@@ -60,7 +63,7 @@ class _LoginWithPasswordState extends State<LoginWithPassword> {
                           if (errorText.isNotEmpty)
                             Text(
                               errorText,
-                              style:  TextStyle(
+                              style: TextStyle(
                                 color: Theme.of(context).colorScheme.error,
                               ),
                             ),
@@ -92,7 +95,7 @@ class _LoginWithPasswordState extends State<LoginWithPassword> {
     if (username == "miguel" && password == "12345") {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => const MyHomePage(title: "title"),
+          builder: (context) => const Home(),
         ),
       );
     } else {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:room_ye/components/copyright.dart';
 import 'package:room_ye/components/fullwidth_button.dart';
+import 'package:room_ye/components/text_input.dart';
 import 'package:room_ye/screens/login_with_password.dart';
 
 class Login extends StatelessWidget {
@@ -9,7 +10,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color: Theme.of(context).colorScheme.primary,
           width: double.infinity,
           child: SafeArea(
             child: Column(
@@ -21,6 +22,7 @@ class Login extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+
                     fontSize: 40,
                   ),
                 ),

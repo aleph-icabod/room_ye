@@ -28,7 +28,7 @@ class TextInput extends StatelessWidget {
         decoration: decoration ?? createInputDecoration(context, label, icon),
         controller: controller,
         style: style?? TextStyle(
-          color: Theme.of(context).colorScheme.surfaceVariant,
+          color: Theme.of(context).colorScheme.inverseSurface,
         ),
       ),
     );
@@ -37,17 +37,18 @@ class TextInput extends StatelessWidget {
   InputDecoration createInputDecoration(
       BuildContext context, String text, IconData? icon) {
     return InputDecoration(
-      border: OutlineInputBorder(
+
+      border: UnderlineInputBorder(
         borderRadius: BorderRadius.circular(30),
       ),
       filled: true,
-      fillColor: Theme.of(context).colorScheme.inverseSurface,
+      fillColor: Theme.of(context).colorScheme.surface,
       prefixIcon: icon != null ? Icon(icon) : null,
       contentPadding: const EdgeInsets.all(20),
       hintText: text,
-      prefixIconColor: Theme.of(context).colorScheme.surfaceVariant,
+      prefixIconColor: Theme.of(context).colorScheme.inverseSurface,
       hintStyle: TextStyle(
-        color: Theme.of(context).colorScheme.surfaceVariant,
+        color: Theme.of(context).colorScheme.inverseSurface,
       ),
     );
   }
