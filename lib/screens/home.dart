@@ -46,7 +46,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return false;
+        switch(selectedIndex){
+          case 0:
+            if (homeTabKey.currentState!=null&&homeTabKey.currentState!.canPop()){
+              homeTabKey.currentState?.pop();
+            }else{
+              return true;
+            }
+            break;
+        }
+        return true;
       },
       child: Scaffold(
         appBar: AppBar(

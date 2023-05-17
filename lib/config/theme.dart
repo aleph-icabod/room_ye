@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-const colorScheme =ColorScheme(
+const colorScheme = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xFF6750A4),
   onPrimary: Color(0xFFFFFFFF),
@@ -35,13 +34,29 @@ const colorScheme =ColorScheme(
   scrim: Color(0xFF000000),
 );
 
-
-class RoomYeeTheme{
-  themeData(){
+class RoomYeeTheme {
+  themeData() {
     return ThemeData(
-      useMaterial3: true,
-      colorScheme: colorScheme,
-    );
+        useMaterial3: true,
+        colorScheme: colorScheme,
+        filledButtonTheme: FilledButtonThemeData(
+            style: ButtonStyle(
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+          ),
+        )),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+               Colors.red,
+              ),
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+          ),
+        )));
   }
-
 }

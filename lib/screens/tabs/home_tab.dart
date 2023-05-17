@@ -59,7 +59,7 @@ class _FeedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: UIConstants.paddingBetweenComponents),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,74 +70,39 @@ class _FeedPage extends StatelessWidget {
               "Ten un buen dia!",
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            SizedBox(
+            const SizedBox(
               height: UIConstants.paddingBetweenComponents,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 FilledButton.icon(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<OutlinedBorder>(
-                      const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                  ),
                   onPressed: () {},
-                  icon: Icon(Icons.add_circle_outline),
-                  label: Text("Crear Nuevo"),
+                  icon: const Icon(Icons.add_circle_outline),
+                  label: const Text("Crear Nuevo"),
                 ),
                 FilledButton.icon(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<OutlinedBorder>(
-                      const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                  ),
                   onPressed: () {},
-                  icon: Icon(Icons.search),
-                  label: Text("Crear Nuevo"),
+                  icon: const Icon(Icons.search),
+                  label: const Text("Crear Nuevo"),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: UIConstants.paddingBetweenComponents,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<OutlinedBorder>(
-                      const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                  ),
                   onPressed: () {},
-                  child: Text("Publicaciones"),
+                  child: const Text("Publicaciones"),
                 ),
                 ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<OutlinedBorder>(
-                      const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                  ),
                   onPressed: () {},
                   child: Text("Anuncios"),
                 ),
                 ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<OutlinedBorder>(
-                      const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                  ),
                   onPressed: () {},
                   child: Text("Eventos"),
                 ),
