@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:room_ye/components/publication_card.dart';
 import 'package:room_ye/config/constants.dart';
+import 'package:room_ye/models/publication_model.dart';
+
+import '../mocks/publications.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -125,9 +128,12 @@ class _HomeState extends State<Home> {
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.all(8),
-                    itemCount: 1000,
+                    itemCount: Publications.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return PublicationCard();
+                      return PublicationCard(
+                        publication: Publications[index],
+
+                      );
                     }),
               ),
             )

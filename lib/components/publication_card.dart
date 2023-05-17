@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:room_ye/config/constants.dart';
+import 'package:room_ye/models/publication_model.dart';
 
 class PublicationCard extends StatelessWidget {
+
+  final PublicationModel publication;
+
+  const PublicationCard({super.key, required this.publication});
+
+
   @override
   Widget build(BuildContext context) {
-    final textStyle=TextStyle(
-      color: Colors.white,
-    );
 
     return Card(
       shape: RoundedRectangleBorder(
@@ -29,9 +33,10 @@ class PublicationCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 30,
+                    backgroundImage: NetworkImage(publication.avatar),
                   ),
                   SizedBox(width: 20,),
-                  Text("Maria robles",
+                  Text(publication.owner,
                     style: TextStyle(
                       fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                         color:Theme.of(context).colorScheme.surfaceVariant,
@@ -39,7 +44,7 @@ class PublicationCard extends StatelessWidget {
                 ],
               ),
               Flexible(
-                child:Text("Rento departamento ubicación centrica, precio a tratar. Más info DM.",
+                child:Text(publication.content,
                 style: TextStyle(
                   color:Theme.of(context).colorScheme.surfaceVariant,
                 ),),
@@ -47,8 +52,9 @@ class PublicationCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Hace 1 hora",style: TextStyle(
+                  Text("${publication.createdAt.year}-${publication.createdAt.month}-${publication.createdAt.day}",style: TextStyle(
                     color:Theme.of(context).colorScheme.surfaceVariant,
+                    overflow: TextOverflow.ellipsis,
                   ),),
                   IconButton(onPressed: (){}, icon: Icon(Icons.favorite,color:Theme.of(context).colorScheme.surfaceVariant, )),
                   IconButton(onPressed: (){}, icon: Icon(Icons.push_pin, color:Theme.of(context).colorScheme.surfaceVariant,)),
