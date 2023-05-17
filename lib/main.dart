@@ -14,7 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Room Ye',
-      theme: RoomYeeTheme().themeData(),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: MycolorScheme,
+      ),
       debugShowCheckedModeBanner: false,
       home: Login(),
     );

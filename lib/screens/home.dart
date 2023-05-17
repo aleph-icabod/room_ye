@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:room_ye/components/fullwidth_button.dart';
+import 'package:room_ye/components/publication_card.dart';
 import 'package:room_ye/config/constants.dart';
-import 'package:room_ye/screens/tabs/home_tab.dart';
+import 'package:room_ye/models/publication_model.dart';
 
-final homeTabKey = GlobalKey<NavigatorState>();
+import '../mocks/publications.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,103 +14,131 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var selectedIndex = 0;
-
-  final tabs = <Widget>[
-    HomeTab(
-      homeTabKey: homeTabKey,
-    ),
-    _FavoritesTab()
-  ];
-  final menuOptions = const <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: "",
-    ),
-    BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ""),
-  ];
-
-  onTap(int index) {
-    if (index == selectedIndex) {
-      if (homeTabKey.currentState!=null&&homeTabKey.currentState!.canPop()){
-        homeTabKey.currentState?.pop();
-      }
-      return;
-    }
-    setState(() {
-      selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        switch(selectedIndex){
-          case 0:
-            if (homeTabKey.currentState!=null&&homeTabKey.currentState!.canPop()){
-              homeTabKey.currentState?.pop();
-            }else{
-              return true;
-            }
-            break;
-        }
-        return true;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          leading: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: CircleAvatar(
-              radius: 60,
-              backgroundImage: AssetImage("assets/images/avatar.png"),
+    return Scaffold(
+      appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: CircleAvatar(
+            radius: 60,
+            backgroundImage: AssetImage("assets/images/avatar.png"),
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: FaIcon(
+              FontAwesomeIcons.solidPaperPlane,
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: FaIcon(
-                FontAwesomeIcons.solidPaperPlane,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Hola, Miguel!",
+                style: Theme.of(context).textTheme.headlineLarge),
+            Text(
+              "Ten un buen dia!",
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
+            SizedBox(
+              height: UIConstants.paddingBetweenComponents,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FilledButton.icon(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  icon: Icon(Icons.add_circle_outline),
+                  label: Text("Crear Nuevo"),
+                ),
+                FilledButton.icon(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  icon: Icon(Icons.search),
+                  label: Text("Buscar"),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: UIConstants.paddingBetweenComponents,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text("Publicaciones"),
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text("Anuncios"),
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text("Eventos"),
+                ),
+              ],
+            ),
+
+            SizedBox(
+              height: 500,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 40),
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.all(8),
+                    itemCount: Publications.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return PublicationCard(
+                        publication: Publications[index],
+
+                      );
+                    }),
+              ),
+            )
           ],
         ),
-        body: IndexedStack(index: selectedIndex, children: tabs),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.shifting,
-          onTap: onTap,
-          selectedIconTheme: IconThemeData(
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          backgroundColor: Colors.red,
-          currentIndex: selectedIndex,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          unselectedItemColor: Theme.of(context).colorScheme.primaryContainer,
-          items: menuOptions,
-        ),
-      ),
-    );
-  }
-}
-
-class _FavoritesTab extends StatefulWidget {
-  const _FavoritesTab({
-    super.key,
-  });
-
-  @override
-  State<_FavoritesTab> createState() => _FavoritesTabState();
-}
-
-class _FavoritesTabState extends State<_FavoritesTab> {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-        child: Placeholder(),
       ),
     );
   }
